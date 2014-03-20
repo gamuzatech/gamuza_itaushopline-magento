@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Gamuza Itau ShopLine - Itau ShopLine for Magento platform.
+ * Copyright (C) 2013 Gamuza Technologies (http://www.gamuza.com.br/)
+ * Author: Eneias Ramos de Melo <eneias@gamuza.com.br>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ * Boston, MA  02110-1301, USA.
+ */
+
+/*
+ * See the AUTHORS file for a list of people on the Gamuza Team.
+ * See the ChangeLog files for a list of changes.
+ * These files are distributed with Gamuza_Itaushopline at http://code.google.com/p/gamuzaopen/.
+ */
+-->
+
+<config>
+  <modules>
+    <Gamuza_Itaushopline>
+      <version>0.0.2</version>
+    </Gamuza_Itaushopline>
+  </modules>
+  <global>
+    <helpers>
+      <itaushopline>
+        <class>Gamuza_Itaushopline_Helper</class>
+      </itaushopline>
+    </helpers>
+	<blocks>
+	  <itaushopline>
+		<class>Gamuza_Itaushopline_Block</class>
+	  </itaushopline>
+	</blocks>
+	<models>
+	  <itaushopline>
+		<class>Gamuza_Itaushopline_Model</class>
+		<resourceModel>itaushopline_mysql4</resourceModel>
+	  </itaushopline>
+	  <itaushopline_mysql4>
+		<class>Gamuza_Itaushopline_Model_Mysql4</class>
+		<entities>
+		  <transactions>
+			<table>gamuza_itaushopline_transactions</table>
+		  </transactions>
+        </entities>
+	  </itaushopline_mysql4>
+	</models>
+	<resources>
+	  <itaushopline_setup>
+		<setup>
+		  <module>Gamuza_Itaushopline</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </itaushopline_setup>
+	  <itaushopline_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </itaushopline_write>
+	  <itaushopline_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </itaushopline_read>
+	</resources>
+	<payment>
+	    <itaushopline>
+		<types>
+		    <ITAU_SLIP>
+			<code>ITAU_SLIP</code>
+			<name>Itau Slip</name>
+			<order>0</order>
+		    </ITAU_SLIP>
+		    <ITAU_TEF>
+			<code>ITAU_TEF</code>
+			<name>Itau TEF</name>
+			<order>1</order>
+		    </ITAU_TEF>
+		</types>
+	    </itaushopline>
+	</payment>
+	<events>
+	    <sales_order_invoice_register>
+		<observers>
+		    <gamuza_itaushopline_observer_invoice_register>
+			<type>singleton</type>
+			<class>itaushopline/observer_invoice</class>
+			<method>capture</method>
+		    </gamuza_itaushopline_observer_invoice_register>
+		</observers>
+	    </sales_order_invoice_register>
+	</events>
+    </global>
+  <admin>
+	<routers>
+	  <itaushopline>
+	    <use>admin</use>
+		<args>
+		  <module>Gamuza_Itaushopline</module>
+		  <frontName>itaushopline</frontName>
+		</args>
+	  </itaushopline>
+  </routers>
+  </admin>
+    <frontend>
+	  <routers>
+	    <itaushopline>
+		<use>standard</use>
+		<args>
+		    <module>Gamuza_Itaushopline</module>
+		    <frontname>itaushopline</frontname>
+		</args>
+	  </itaushopline>
+	</routers>
+        <layout>
+            <updates>
+            <itaushopline>
+                <file>itaushopline.xml</file>
+            </itaushopline>
+        </updates>
+        </layout>
+        <translate>
+           <modules>
+              <Gamuza_Itaushopline>
+                 <files>
+                    <default>Gamuza_Itaushopline.csv</default>
+                 </files>
+              </Gamuza_Itaushopline>
+           </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <translate>
+           <modules>
+              <Gamuza_Itaushopline>
+                 <files>
+                    <default>Gamuza_Itaushopline.csv</default>
+                 </files>
+              </Gamuza_Itaushopline>
+           </modules>
+        </translate>
+        <layout>
+            <updates>
+            <itaushopline>
+                <file>itaushopline.xml</file>
+            </itaushopline>
+        </updates>
+        </layout>
+    </adminhtml>
+    <default>
+     <payment>
+      <itaushopline_standard>
+         <active>1</active>
+         <title>Itaú ShopLine</title>
+         <order_status>pending_payment</order_status>
+         <cctypes>ITAU_SLIP,ITAU_TEF</cctypes>
+         <model>itaushopline/standard</model>
+         <payment_action>authorize</payment_action>
+     </itaushopline_standard>
+     <itaushopline_settings>
+        <expiration>3</expiration>
+        <submit_url>https://shopline.itau.com.br/shopline/shopline.asp</submit_url>
+        <query_url>https://shopline.itau.com.br/shopline/consulta.asp</query_url>
+    </itaushopline_settings>
+    </payment>
+   </default>
+</config>
