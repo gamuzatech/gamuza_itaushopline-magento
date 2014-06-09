@@ -31,7 +31,7 @@ extends Mage_Payment_Block_Info
 {
     protected function _construct ()
     {
-       $this->setTemplate ('itaushopline/standard/info.phtml');
+       $this->setTemplate ('gamuza/itaushopline/standard/info.phtml');
     }
 
     public function getCcTypeName()

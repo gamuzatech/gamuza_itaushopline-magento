@@ -1,0 +1,56 @@
+<!--
+/*
+ * Gamuza Itau ShopLine - Itau ShopLine for Magento platform.
+ * Copyright (C) 2013 Gamuza Technologies (http://www.gamuza.com.br/)
+ * Author: Eneias Ramos de Melo <eneias@gamuza.com.br>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ * Boston, MA  02110-1301, USA.
+ */
+
+/*
+ * See the AUTHORS file for a list of people on the Gamuza Team.
+ * See the ChangeLog files for a list of changes.
+ * These files are distributed with Gamuza_Itaushopline at http://code.google.com/p/gamuzaopen/.
+ */
+-->
+
+<?php $_code=$this->getMethodCode() ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+    <li>
+        <label for="<?php echo $_code ?>_cc_type" class="required"><em>*</em><?php echo $this->__('Type') ?></label>
+        <div class="input-box">
+			<?php $_ccType = $this->getInfoData('cc_type') ?>
+			<table id="<?php echo $_code ?>_cc_type"><tr>
+            <?php foreach ($this->getAvailableCcTypes() as $_typeCode => $_typeName): ?>
+				<td style="text-align:center;">
+				<label for="<?php echo $_typeCode; ?>_cc_type">
+				<img src="<?php echo $this->getSkinUrl ("images/gamuza/itaushopline/{$_typeCode}.png"); ?>" />
+				</label>
+				<br style="clear:both;" />
+                <input type="radio" value="<?php echo $_typeCode ?>"
+                       <?php if($_typeCode==$_ccType): ?> checked="checked"<?php endif ?>
+                       name="payment[cc_type]"
+                       title="<?php echo $_typeName; ?>"
+                       class="validate-one-required-by-name"
+                       id="<?php echo $_typeCode; ?>_cc_type" />
+				       <span><label style="float:none;" for="<?php echo $_typeCode; ?>_cc_type"><?php echo Mage::helper ('itaushopline')->__($_typeName); ?></label></span>
+				</td>
+            <?php endforeach ?>
+			</tr></table>
+        </div>
+    </li>
+    <?php echo $this->getChildHtml() ?>
+</ul>

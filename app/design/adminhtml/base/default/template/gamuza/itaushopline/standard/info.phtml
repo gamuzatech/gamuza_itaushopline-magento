@@ -1,4 +1,4 @@
-<?php
+<!--
 /*
  * Gamuza Itau ShopLine - Itau ShopLine for Magento platform.
  * Copyright (C) 2013 Gamuza Technologies (http://www.gamuza.com.br/)
@@ -25,46 +25,29 @@
  * See the ChangeLog files for a list of changes.
  * These files are distributed with Gamuza_Itaushopline at http://code.google.com/p/gamuzaopen/.
  */
+-->
 
-class Gamuza_Itaushopline_Block_Standard_Form
-extends Mage_Payment_Block_Form
-{
-    protected function _construct()
-    {
-        parent::_construct();
+<p><strong><?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?></strong></p>
 
-        $this->setTemplate('gamuza/itaushopline/standard/form.phtml');
-    }
+<?php if ($_specificInfo = $this->getSpecificInformation()):?>
+<table>
+    <tbody>
+    <?php foreach ($_specificInfo as $_label => $_value):?>
+        <tr>
+            <td><strong><?php echo $this->escapeHtml($_label)?>:</strong></td>
+            <td><?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<?php endif;?>
 
-    protected function _getConfig()
-    {
-        return Mage::getSingleton('itaushopline/config');
-    }
+<form method="post" id="itaushopline_submit_form" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" target="_blank">
+<?php echo $this->getSubmitTransactionInformation (); ?>
+</form>
 
-    public function getAvailableCcTypes()
-    {
-        $types = $this->_getConfig()->getCcTypes();
-        if ($method = $this->getMethod()) {
-            $availableTypes = $method->getConfigData('cctypes');
-            if ($availableTypes) {
-                $availableTypes = explode(',', $availableTypes);
-                foreach ($types as $code=>$name) {
-                    if (!in_array($code, $availableTypes)) {
-                        unset($types[$code]);
-                    }
-                }
-            }
-        }
+<form method="post" id="itaushopline_query_form" action="<?php echo $this->_getStoreConfig ('query_url'); ?>" target="_blank">
+<?php echo $this->getQueryTransactionInformation (); ?>
+</form>
 
-        return $types;
-    }
-
-    protected function _toHtml()
-    {
-        Mage::dispatchEvent('payment_form_block_to_html_before', array(
-            'block'     => $this
-        ));
-
-        return parent::_toHtml();
-    }
-}
+<?php echo $this->getChildHtml()?>

@@ -1,4 +1,5 @@
-<?php
+<?xml version="1.0" encoding="utf-8"?>
+<!--
 /*
  * Gamuza Itau ShopLine - Itau ShopLine for Magento platform.
  * Copyright (C) 2013 Gamuza Technologies (http://www.gamuza.com.br/)
@@ -25,46 +26,12 @@
  * See the ChangeLog files for a list of changes.
  * These files are distributed with Gamuza_Itaushopline at http://code.google.com/p/gamuzaopen/.
  */
+-->
 
-class Gamuza_Itaushopline_Block_Standard_Form
-extends Mage_Payment_Block_Form
-{
-    protected function _construct()
-    {
-        parent::_construct();
-
-        $this->setTemplate('gamuza/itaushopline/standard/form.phtml');
-    }
-
-    protected function _getConfig()
-    {
-        return Mage::getSingleton('itaushopline/config');
-    }
-
-    public function getAvailableCcTypes()
-    {
-        $types = $this->_getConfig()->getCcTypes();
-        if ($method = $this->getMethod()) {
-            $availableTypes = $method->getConfigData('cctypes');
-            if ($availableTypes) {
-                $availableTypes = explode(',', $availableTypes);
-                foreach ($types as $code=>$name) {
-                    if (!in_array($code, $availableTypes)) {
-                        unset($types[$code]);
-                    }
-                }
-            }
-        }
-
-        return $types;
-    }
-
-    protected function _toHtml()
-    {
-        Mage::dispatchEvent('payment_form_block_to_html_before', array(
-            'block'     => $this
-        ));
-
-        return parent::_toHtml();
-    }
-}
+<layout version="0.1.0">
+  <itaushopline_adminhtml_transactions_index>
+	<reference name="content">
+	  <block type="itaushopline/adminhtml_transactions" name="itaushopline.transactions" />
+	</reference>
+  </itaushopline_adminhtml_transactions_index>
+</layout>
