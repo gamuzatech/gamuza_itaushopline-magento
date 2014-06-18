@@ -131,7 +131,7 @@
         <layout>
             <updates>
             <itaushopline>
-                <file>itaushopline.xml</file>
+                <file>gamuza/itaushopline.xml</file>
             </itaushopline>
         </updates>
         </layout>
@@ -158,7 +158,7 @@
         <layout>
             <updates>
             <itaushopline>
-                <file>itaushopline.xml</file>
+                <file>gamuza/itaushopline.xml</file>
             </itaushopline>
         </updates>
         </layout>
