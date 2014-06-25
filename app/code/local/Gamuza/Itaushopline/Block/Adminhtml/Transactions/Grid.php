@@ -41,8 +41,10 @@ extends Mage_Adminhtml_Block_Widget_Grid
 
 	protected function _prepareCollection()
 	{
+		$configModel = Mage::getModel ('utils/config');
+		
 		$collection = Mage::getModel("itaushopline/transactions")->getCollection();
-		$collection->getSelect()->join (array('table_sales_order' => 'sales_flat_order'),
+		$collection->getSelect()->join (array('table_sales_order' => $configModel->getTableName('sales/order')),
 			                                  'main_table.order_id = table_sales_order.entity_id',
 			                                    array('increment_id'));
 		$this->setCollection($collection);
