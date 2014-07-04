@@ -32,7 +32,8 @@ extends Mage_Payment_Model_Method_Abstract
 
 protected $_code = 'itaushopline_standard';
 
-protected $_canAuthorize = true;
+protected $_canOrder = true;
+protected $_canAuthorize = false;
 protected $_canCapture = true;
 
 protected $_formBlockType = 'itaushopline/standard_form';
@@ -63,7 +64,20 @@ public function _getStoreConfig ($field)
     return Mage::getStoreConfig ("payment/itaushopline_settings/$field");
 }
 
-public function authorize (Varien_Object $payment, $amount)
+private function _getSplittedStreet (Mage_Sales_Model_Order_Address $address, $store_id)
+{
+    $lines_count = Mage::helper ('customer/address')->getStreetLines ($store_id);
+    $street1 = "";
+    $street2 = "";
+
+    for ($i = 1; $i < $lines_count; $i ++) $street1 .= $address->getStreet ($i) . chr (32);
+
+    $street2 = $address->getStreet ($lines_count); // last line for neighborhood.
+
+    return array (substr ($street1, 0, -1), $street2);
+}
+
+public function order (Varien_Object $payment, $amount)
 {
     $order = $payment->getOrder ();
     $order_id = $order->getId ();
@@ -82,8 +96,7 @@ public function authorize (Varien_Object $payment, $amount)
     $tax_vat = $order->getCustomer()->getTaxvat ();
     $address = $quote->getBillingAddress();
     $name = $address->getName ();
-    $street1 = $address->getStreet1 ();
-    $street2 = $address->getStreet2 ();
+    list ($street1, $street2) = $this->_getSplittedStreet ($address, $store_id);
     $postcode = $address->getPostcode ();
     $city = $address->getCity ();
     $region = $address->getRegion ();
