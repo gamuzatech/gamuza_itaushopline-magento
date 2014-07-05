@@ -86,6 +86,11 @@ public function order (Varien_Object $payment, $amount)
     $store_id = $order->getStoreId ();
     
     $ccType = $payment->getCcType ();
+
+    // reorder
+    $reorder_increment_id = explode ('-', $order_increment_id); // reorder
+    $order_increment_id = $reorder_increment_id [0];
+    $order_suffix_id = @$reorder_increment_id [1];
     
     $code = $this->_getStoreConfig ('code');
     $key = $this->_getStoreConfig ('key');
@@ -107,7 +112,14 @@ public function order (Varien_Object $payment, $amount)
     $increment = $this->_getStoreConfig ('order_id_increment');
     
     $order_increment_prefix = $this->_getOrderIncrementPrefix ($store_id);
-    $number = ($order_increment_id - $order_increment_prefix) + $increment;
+    $number = ($order_increment_id - $order_increment_prefix);
+    if (!empty ($order_suffix_id))
+    {
+        $number *= pow (10, strlen ($order_suffix_id));
+        $number += $order_suffix_id;
+    }
+    $number += $increment;
+
     $short_number = substr ($number, -8); /* Order number max. length for ItauShopLine */
     
     $submit_dc = Mage::getModel ('itaushopline/itaucripto')->geraDados(
