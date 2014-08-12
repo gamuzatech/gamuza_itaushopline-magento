@@ -174,6 +174,7 @@
          <payment_action>order</payment_action>
      </itaushopline_standard>
      <itaushopline_settings>
+        <submit_type>1</submit_type>
         <expiration>3</expiration>
         <submit_url>https://shopline.itau.com.br/shopline/shopline.asp</submit_url>
         <query_url>https://shopline.itau.com.br/shopline/consulta.asp</query_url>

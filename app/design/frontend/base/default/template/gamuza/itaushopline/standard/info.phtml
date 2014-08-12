@@ -42,7 +42,9 @@
 </table>
 <?php endif;?>
 
-<?php if (!strcmp ($this->getRequest()->getControllerName(), 'onepage')): ?>
+<?php $controllerName = Mage::app ()->getRequest ()->getControllerName (); ?>
+
+<?php if (!strcmp ($controllerName, 'onepage')): ?>
 <?php
 $popUpAlert1 = $this->helper ('itaushopline')->__("Hmmm... We found a pop-up blocker in your web browser.");
 $popUpAlert2 = $this->helper ('itaushopline')->__("Please disable your pop-up blocker for this site and click on 'Submit' link again.");
@@ -69,11 +71,16 @@ function GamuzaPaymentPopup (form)
 </script>
 <?php endif; ?>
 
-<form method="post" id="itaushopline_form_submit" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" onSubmit="GamuzaPaymentPopup (this);" target="_blank">
+<?php
+$submitType = Mage::getStoreConfig ('payment/itaushopline_settings/submit_type');
+$submitForm = !strcmp ($controllerName, 'onepage') && !strcmp ($submitType, '1') ? 'onSubmit="GamuzaPaymentPopup (this);"' : 'target="_blank"';
+?>
+
+<form method="post" id="itaushopline_form_submit" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" <?php echo $submitForm; ?>>
 <?php echo $this->getSubmitTransactionInformation (); ?>
 </form>
 
-<?php if (!strcmp ($this->getRequest()->getControllerName(), 'onepage')): ?>
+<?php if (!strcmp ($controllerName, 'onepage')): ?>
 <script type="text/javascript">
 Event.observe (window, "load", function (){
 $('itaushopline_form_submit').submit.click ();
