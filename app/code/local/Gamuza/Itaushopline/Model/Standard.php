@@ -61,7 +61,7 @@ public function _getOrderIncrementPrefix ($order_store_id)
 
 public function _getStoreConfig ($field)
 {
-    return Mage::getStoreConfig ("payment/itaushopline_settings/$field");
+    return Mage::getStoreConfig ("payment/itaushopline_{$field}");
 }
 
 private function _getSplittedStreet (Mage_Sales_Model_Order_Address $address, $store_id)
@@ -92,12 +92,12 @@ public function order (Varien_Object $payment, $amount)
     $order_increment_id = $reorder_increment_id [0];
     $order_suffix_id = @$reorder_increment_id [1];
     
-    $code = $this->_getStoreConfig ('code');
-    $key = $this->_getStoreConfig ('key');
-    $obs = $this->_getStoreConfig ('obs');
-    $obsadd1 = $this->_getStoreConfig ('obsadd1');
-    $obsadd2 = $this->_getStoreConfig ('obsadd2');
-    $obsadd3 = $this->_getStoreConfig ('obsadd3');
+    $code = $this->_getStoreConfig ('settings/code');
+    $key = $this->_getStoreConfig ('settings/key');
+    $obs = $this->_getStoreConfig ('settings/obs');
+    $obsadd1 = $this->_getStoreConfig ('settings/obsadd1');
+    $obsadd2 = $this->_getStoreConfig ('settings/obsadd2');
+    $obsadd3 = $this->_getStoreConfig ('settings/obsadd3');
     $tax_vat = $order->getCustomer()->getTaxvat ();
     $address = $quote->getBillingAddress();
     $name = $address->getName ();
@@ -105,11 +105,11 @@ public function order (Varien_Object $payment, $amount)
     $postcode = $address->getPostcode ();
     $city = $address->getCity ();
     $region = $address->getRegion ();
-    $expiration = strtotime ('+' . $this->_getStoreConfig ('expiration') . 'days');
+    $expiration = strtotime ('+' . $this->_getStoreConfig ('settings/expiration') . 'days');
     $bank_expiration = date ('dmY', $expiration);
     $transaction_expiration = date ('Y-m-d', $expiration);
-    $return_url = $this->_getStoreConfig ('return_url');
-    $increment = $this->_getStoreConfig ('order_id_increment');
+    $return_url = $this->_getStoreConfig ('settings/return_url');
+    $increment = $this->_getStoreConfig ('settings/order_id_increment');
     
     $order_increment_prefix = $this->_getOrderIncrementPrefix ($store_id);
     $number = ($order_increment_id - $order_increment_prefix);
@@ -155,6 +155,18 @@ public function order (Varien_Object $payment, $amount)
     $payment->setStatus(self::STATUS_APPROVED);
     
     return $this;
+}
+
+public function isAvailable ($quote = null)
+{
+    $is_available = parent::isAvailable ($quote);
+
+    if (empty ($quote)) return $is_available;
+
+    $current_group_id = $quote->getCustomerGroupId ();
+    $customer_groups = explode (',', $this->_getStoreConfig ('additional/customer_groups'));
+
+    return $is_available && in_array ($current_group_id, $customer_groups);
 }
 
 }

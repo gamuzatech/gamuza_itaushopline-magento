@@ -179,6 +179,9 @@
         <submit_url>https://shopline.itau.com.br/shopline/shopline.asp</submit_url>
         <query_url>https://shopline.itau.com.br/shopline/consulta.asp</query_url>
     </itaushopline_settings>
+    <itaushopline_additional>
+        <customer_groups>0,1</customer_groups>
+    </itaushopline_additional>
     </payment>
    </default>
 </config>
