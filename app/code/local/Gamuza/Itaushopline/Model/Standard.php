@@ -40,7 +40,7 @@ protected $_formBlockType = 'itaushopline/standard_form';
 protected $_infoBlockType = 'itaushopline/standard_info';
 
 const ITAU_SHOPLINE_SUBMIT_TRANSACTION_LENGTH = 1698;
-const ITAU_SHOPLINE_QUERY_TRANSACTION_LENGTH = 127;
+const ITAU_SHOPLINE_QUERY_TRANSACTION_LENGTH = 123;
 
 public function _getOrderIncrementPrefix ($order_store_id)
 {
