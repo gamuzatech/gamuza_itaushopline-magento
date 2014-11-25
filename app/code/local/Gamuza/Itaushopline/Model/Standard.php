@@ -98,7 +98,7 @@ public function order (Varien_Object $payment, $amount)
     $obsadd1 = $this->_getStoreConfig ('settings/obsadd1');
     $obsadd2 = $this->_getStoreConfig ('settings/obsadd2');
     $obsadd3 = $this->_getStoreConfig ('settings/obsadd3');
-    $tax_vat = $order->getCustomer()->getTaxvat ();
+    $tax_vat = $order->getCustomerTaxvat();
     $address = $quote->getBillingAddress();
     $name = $address->getName ();
     list ($street1, $street2) = $this->_getSplittedStreet ($address, $store_id);
