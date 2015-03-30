@@ -92,6 +92,11 @@
 			<name>Itau TEF</name>
 			<order>1</order>
 		    </ITAU_TEF>
+		    <ITAU_CC>
+			<code>ITAU_CC</code>
+			<name>Itau Credit Card</name>
+			<order>2</order>
+		    </ITAU_CC>
 		</types>
 	    </itaushopline>
 	</payment>
@@ -169,15 +174,15 @@
          <active>1</active>
          <title>Itaú ShopLine</title>
          <order_status>pending_payment</order_status>
-         <cctypes>ITAU_SLIP,ITAU_TEF</cctypes>
+         <cctypes>ITAU_SLIP,ITAU_TEF,ITAU_CC</cctypes>
          <model>itaushopline/standard</model>
          <payment_action>order</payment_action>
      </itaushopline_standard>
      <itaushopline_settings>
         <submit_type>1</submit_type>
         <expiration>3</expiration>
-        <submit_url>https://shopline.itau.com.br/shopline/shopline.asp</submit_url>
-        <query_url>https://shopline.itau.com.br/shopline/consulta.asp</query_url>
+        <submit_url>https://shopline.itau.com.br/shopline/shopline.aspx</submit_url>
+        <query_url>https://shopline.itau.com.br/shopline/consulta.aspx</query_url>
     </itaushopline_settings>
     <itaushopline_additional>
         <customer_groups>0,1</customer_groups>

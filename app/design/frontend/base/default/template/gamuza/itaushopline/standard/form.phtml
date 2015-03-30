@@ -35,7 +35,7 @@
 			<?php $_ccType = $this->getInfoData('cc_type') ?>
 			<table id="<?php echo $_code ?>_cc_type"><tr>
             <?php foreach ($this->getAvailableCcTypes() as $_typeCode => $_typeName): ?>
-				<td style="text-align:center;">
+				<td style="display:inline-block;padding-bottom:10px;text-align:center;">
 				<label for="<?php echo $_typeCode; ?>_cc_type">
 				<img src="<?php echo $this->getSkinUrl ("images/gamuza/itaushopline/{$_typeCode}.png"); ?>" />
 				</label>
