@@ -64,7 +64,7 @@ public function _getStoreConfig ($field)
     return Mage::getStoreConfig ("payment/itaushopline_{$field}");
 }
 
-private function _getSplittedStreet (Mage_Sales_Model_Order_Address $address, $store_id)
+private function _getSplittedStreet (/* Mage_Sales_Model_Order_Address */ $address, $store_id)
 {
     $lines_count = Mage::helper ('customer/address')->getStreetLines ($store_id);
     $street1 = "";
