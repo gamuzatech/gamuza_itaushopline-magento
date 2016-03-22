@@ -70,9 +70,8 @@ extends Mage_Payment_Block_Info
     public function getSubmitTransactionInformation ()
     {
 		$order = $this->getOrder();
-		if (empty ($order)) return;
-	
-		$order_id = $order->getId ();
+		if (!empty ($order)) $order_id = $order->getId ();
+		else $order_id = $this->getInfo ()->getLastTransId ();
 	
         $collection = Mage::getModel ('itaushopline/transactions')->getCollection();
         $collection->getSelect()->where ("order_id = {$order_id}");
