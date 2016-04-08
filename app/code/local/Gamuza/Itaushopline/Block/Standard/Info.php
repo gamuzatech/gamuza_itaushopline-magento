@@ -73,6 +73,8 @@ extends Mage_Payment_Block_Info
 		if (!empty ($order)) $order_id = $order->getId ();
 		else $order_id = $this->getInfo ()->getLastTransId ();
 	
+	if(empty($order_id)) return; // Checkout Progress?
+	
         $collection = Mage::getModel ('itaushopline/transactions')->getCollection();
         $collection->getSelect()->where ("order_id = {$order_id}");
         
