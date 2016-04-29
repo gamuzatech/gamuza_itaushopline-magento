@@ -1,4 +1,98 @@
-gamuza_itaushopline-magento
-===========================
+<h1>Módulo do Itaú ShopLine</h1>
 
-Módulo do Itaú ShopLine para a plataforma Magento versão CE 1.6 ou superior (Necessário módulo Gamuza_Utils)
+**Compatível com a plataforma Magento CE versão 1.6 a 1.9**
+
+[Necessário módulo Gamuza_Utils](https://github.com/gamuzabrasil/gamuza_utils-magento)
+
+Os seu clientes também podem pagar suas compras usando o método de pagamento mais comum em lojas virtuais.
+
+Com o nosso módulo do Itaú ShopLine, você dispôe em sua loja virtual uma das formas de pagamentos mais utilizadas na internet.
+
+Você ainda pode gerenciar as suas transaçôes, consultar os pagamentos e reemitir os boletos se necessário.
+
+E não se preocupe com os anti-popup. Nós avisamos também os seus clientes sobre eles também... :)
+
+<img src="http://blog.gamuza.com.br/wp-content/uploads/2012/11/525578_414952425237733_53140469_n.png" alt="" title="Gamuza Itaú ShopLine - Magento" />
+
+<h2>Instalação</h2>
+
+*Atenção! Sempre faça um backup antes de realizar qualquer modificação! Sempre utilize o módulo em ambiente de testes primeiro!"*
+
+**Instalar usando o modgit:**
+
+    $ cd /path/to/magento
+    $ modgit init
+    $ modgit add gamuza_itaushopline https://github.com/gamuzabrasil/gamuza_itaushopline-magento.git
+
+**Instalação manual dos arquivos**
+
+Baixe a ultima versão aqui do pacote Gamuza_Itaushopline-xxx.tbz2 e descompacte o arquivo baixado para dentro do diretório principal do Magento
+
+Limpe todos os caches em Sistema -> Gerenciamento de Cache
+
+**OBS: Após o cadastro junto ao Itaú, você deve aguardar 24hrs para começar a utilizar o ShopLine.**
+
+<h2>Perguntas Frequentes</h2>
+
+**- Recebi a mensagem: Não foi possível gerar o código de transação para envio. Verifique as suas configurações**
+
+Essa mensagem de erro aparece devido a configurações incorretas em sua loja.
+
+Por favor, verifique:
+
+- Código do Itaú Shopline (Devem estar em letras maiúsculas)
+- Chave do Itaú Shopline (Devem estar em letras maiúsculas)
+- Dias para expiração do boleto
+- Campo de CPF ou CNPJ do cliente (obrigatório).
+- Campos de Endereço e Bairro (Deve ter 2 campos para endereço configurados no painel administrativo)
+- Campos de CEP, Cidade e Estado.
+
+A URL de retorno deve conter um endereço seguro para uma página de sucesso de sua loja.
+
+Ex: https://www.minhaloja.com.br/checkout/onepage/success
+
+**********************************************************************************************
+
+**- O botão PAGAR não está sendo exibido na página de sucesso**
+
+Você usa algum tema customizado em sua loja? Talvez isso pode estar ocasionando o seu problema...
+
+Tente copiar os arquivos do tema default para o seu tema:
+
+    app/design/frontend/base/default/layout/gamuza/utils.xml
+    app/design/frontend/base/default/template/gamuza/utils
+    app/design/frontend/base/default/template/gamuza/itaushopline
+
+Para:
+
+    app/design/frontend/pacote/tema/layout/gamuza/utils.xml
+    app/design/frontend/pacote/tema/template/gamuza/utils
+    app/design/frontend/pacote/tema/template/gamuza/itaushopline
+
+**********************************************************************************************
+
+**Capturando o Retorno**
+
+O endereço para Retorno do Tipo de Pagamento será composto da seguinte maneira:
+
+HTTPS:// + URL de Retorno Cadastrada + URLRetorna do Pedido + parâmetros de retorno criptografados.
+
+Exemplo:
+
+URL de Retorno cadastrada no Módulo Itaú Shopline = http://www.minhaloja.com.br
+URL de retorno passada pelo lojista no pedido em questão = /final/retorno.php
+Dados de retorno criptografados=?DC=A345B456F456W456T56J3K678
+
+Exemplo da chamada à URL final:
+
+https://www.minhaloja.com.br/final/retorno.php?DC=A345B456F456W456T56J3K678
+
+A página de retorno do pagamento deve receber os dados criptografados e chamar o método decripto, e, para acessar o conteúdo de cada campo é necessário usar os métodos que retornam seus conteúdos:
+
+- CodEmp - Código da Empresa ou Código do Site - Alfanumérico de 26 posições
+- Pedido - Numero do Pedido - Numérico com 8 posições
+- TipPag - Tipo de pagamento escolhido pelo comprador - Numérico com 2 posições:
+01 para Pagamento à Vista (TEF ou CDC)
+02 para Boleto
+03 para Cartão Itaucard
+
