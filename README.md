@@ -12,7 +12,7 @@ Você ainda pode gerenciar as suas transaçôes, consultar os pagamentos e reemi
 
 E não se preocupe com os anti-popup. Nós avisamos também os seus clientes sobre eles também... :)
 
-<img src="http://blog.gamuza.com.br/wp-content/uploads/2012/11/525578_414952425237733_53140469_n.png" alt="" title="Gamuza Itaú ShopLine - Magento" />
+<img src="https://dl.dropboxusercontent.com/s/kky7e8waci9v53q/gamuza-itaushopline-box.png" alt="" title="Gamuza Itaú ShopLine - Magento - Box" />
 
 <h2>Instalação</h2>
 
@@ -31,6 +31,44 @@ Baixe a ultima versão aqui do pacote Gamuza_Itaushopline-xxx.tbz2 e descompacte
 Limpe todos os caches em Sistema -> Gerenciamento de Cache
 
 **OBS: Após o cadastro junto ao Itaú, você deve aguardar 24hrs para começar a utilizar o ShopLine.**
+
+<h2>Conhecendo o módulo</h2>
+
+**1 - Selecionando o tipo de pagamento**
+
+<img src="https://dl.dropboxusercontent.com/s/uqybmn82a1q5tan/gamuza-itaushopline-config-admin-1.png" alt="" title="Gamuza Itaú ShopLine - Magento - Configuração no Painel Administrativo" />
+
+**2 - Preenchendo informações e ajustes**
+
+<img src="https://dl.dropboxusercontent.com/s/5yp018r0b4nz9j8/gamuza-itaushopline-config-admin-2.png" alt="" title="Gamuza Itaú ShopLine - Magento - Configuração no Painel Administrativo" />
+
+**3 - Selecionando disponibilidade para grupos específicos**
+
+<img src="https://dl.dropboxusercontent.com/s/h8dsz1c7mv1xnkg/gamuza-itaushopline-config-admin-3.png" alt="" title="Gamuza Itaú ShopLine - Magento - Configuração no Painel Administrativo" />
+
+**4 - Consultando e re-enviando transações**
+
+<img src="https://dl.dropboxusercontent.com/s/3uou2xjqtul13h3/gamuza-itaushopline-transacoes-consulta-e-reenvio.png" alt="" title="Gamuza Itaú ShopLine - Magento - Consultando e re-enviando transações" />
+
+**5 - Criando um pedido via painel administrativo**
+
+<img src="https://dl.dropboxusercontent.com/s/av5egnp4w6vu9j1/gamuza-itaushopline-criar-pedido-admin.png" alt="" title="Gamuza Itau ShopLine - Magento - Criando um Pedido via Painel Administrativo" />
+
+**6 - Consultando um pedido no painel administrativo**
+
+<img src="https://dl.dropboxusercontent.com/s/l36xji0dfcxfvam/gamuza-itaushopline-consulta-pedido-admin.png" alt="" title="Gamuza Itau ShopLine - Magento - Consultando um pedido no painel administrativo" />
+
+**7 - Criando um pedido na loja**
+
+<img src="https://dl.dropboxusercontent.com/s/cho3hc4rcj9kd0t/gamuza-itaushopline-criar-pedido-loja.png" alt="" title="Gamuza Itaú ShopLine - Magento - Criando um Pedido na Loja" />
+
+**8 - Página de Sucesso do Pedido**
+
+<img src="https://dl.dropboxusercontent.com/s/x9n5d2zzexprdvh/gamuza-itaushopline-pagina-sucesso-pedido.png" alt="" title="Gamuza Itaú ShopLine - Magento - Página de Sucesso do Pedido" />
+
+**9 - Re-enviando um pedido na loja**
+
+<img src="https://dl.dropboxusercontent.com/s/ptr1w60mdgri7k0/gamuza-itaushopline-reenviando-pedido-loja.png" alt="" title="Gamuza Itaú ShopLine - Magento - Re-enviando um pedido na loja" />
 
 <h2>Perguntas Frequentes</h2>
 
