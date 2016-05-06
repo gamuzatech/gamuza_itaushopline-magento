@@ -62,11 +62,15 @@ Limpe todos os caches em Sistema -> Gerenciamento de Cache
 
 <img src="https://dl.dropboxusercontent.com/s/cho3hc4rcj9kd0t/gamuza-itaushopline-criar-pedido-loja.png" alt="" title="Gamuza Itaú ShopLine - Magento - Criando um Pedido na Loja" />
 
-**8 - Página de Sucesso do Pedido**
+**8 - Aviso de anti-popup no navegador**
+
+<img src="https://dl.dropboxusercontent.com/s/gpisy1dcr8saast/gamuza-itaushopline-aviso-antipopup.png" alt="" title="Gamuza Itaú ShopLine - Magento - Aviso de anti-popup no navegador" />
+
+**9 - Página de Sucesso do Pedido**
 
 <img src="https://dl.dropboxusercontent.com/s/x9n5d2zzexprdvh/gamuza-itaushopline-pagina-sucesso-pedido.png" alt="" title="Gamuza Itaú ShopLine - Magento - Página de Sucesso do Pedido" />
 
-**9 - Re-enviando um pedido na loja**
+**10 - Re-enviando um pedido na loja**
 
 <img src="https://dl.dropboxusercontent.com/s/ptr1w60mdgri7k0/gamuza-itaushopline-reenviando-pedido-loja.png" alt="" title="Gamuza Itaú ShopLine - Magento - Re-enviando um pedido na loja" />
 
