@@ -16,7 +16,7 @@ E não se preocupe com os anti-popup. Nós avisamos também os seus clientes sob
 
 <h2>Instalação</h2>
 
-*Atenção! Sempre faça um backup antes de realizar qualquer modificação! Sempre utilize o módulo em ambiente de testes primeiro!"*
+<img src="https://dl.dropboxusercontent.com/s/pqpp0x62kqov683/sempre-faca-backup.png" alt="" title="Atenção! Sempre faça um backup da sua loja antes de realizar qualquer modificação!" />
 
 **Instalar usando o modgit:**
 
@@ -28,7 +28,7 @@ E não se preocupe com os anti-popup. Nós avisamos também os seus clientes sob
 
 Baixe a ultima versão aqui do pacote Gamuza_Itaushopline-xxx.tbz2 e descompacte o arquivo baixado para dentro do diretório principal do Magento
 
-Limpe todos os caches em Sistema -> Gerenciamento de Cache
+<img src="https://dl.dropboxusercontent.com/s/ir2vm6cyo3gl1v8/pos-instalacao.png" alt="Após a instalação, limpe os caches, rode a compilação, faça logout e login." title="Após a instalação, limpe os caches, rode a compilação, faça logout e login." />
 
 **OBS: Após o cadastro junto ao Itaú, você deve aguardar 24hrs para começar a utilizar o ShopLine.**
 
@@ -92,6 +92,8 @@ Por favor, verifique:
 A URL de retorno deve conter um endereço seguro para uma página de sucesso de sua loja.
 
 Ex: https://www.minhaloja.com.br/checkout/onepage/success
+
+**OBS: Após o cadastro junto ao Itaú, você deve aguardar 24hrs para começar a utilizar o ShopLine.**
 
 **********************************************************************************************
 
