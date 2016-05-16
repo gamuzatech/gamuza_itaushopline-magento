@@ -33,20 +33,22 @@
         <label for="<?php echo $_code ?>_cc_type" class="required"><em>*</em><?php echo $this->__('Type') ?></label>
         <div class="input-box">
 			<?php $_ccType = $this->getInfoData('cc_type') ?>
+            <?php $_count = 1; ?>
 			<table id="<?php echo $_code ?>_cc_type"><tr>
-            <?php foreach ($this->getAvailableCcTypes() as $_typeCode => $_typeName): ?>
+            <?php foreach ($_availableCcTypes = $this->getAvailableCcTypes() as $_typeCode => $_typeName): ?>
 				<td style="display:inline-block;padding-bottom:10px;text-align:center;">
 				<label for="<?php echo $_typeCode; ?>_cc_type">
 				<img src="<?php echo $this->getSkinUrl ("images/gamuza/itaushopline/{$_typeCode}.png"); ?>" />
 				</label>
 				<br style="clear:both;" />
                 <input type="radio" value="<?php echo $_typeCode ?>"
-                       <?php if($_typeCode==$_ccType): ?> checked="checked"<?php endif ?>
+                       <?php if($_typeCode==$_ccType || count ($_availableCcTypes) == $_count): ?> checked="checked"<?php endif ?>
                        name="payment[cc_type]"
                        title="<?php echo $_typeName; ?>"
                        class="validate-one-required-by-name"
                        id="<?php echo $_typeCode; ?>_cc_type" />
 				       <span><label style="float:none;" for="<?php echo $_typeCode; ?>_cc_type"><?php echo Mage::helper ('itaushopline')->__($_typeName); ?></label></span>
+                      <?php $_count ++; ?>
 				</td>
             <?php endforeach ?>
 			</tr></table>
@@ -54,3 +56,4 @@
     </li>
     <?php echo $this->getChildHtml() ?>
 </ul>
+
