@@ -121,6 +121,17 @@
 			      	<show_in_website>1</show_in_website>
 			      	<show_in_store>1</show_in_store>
 				    <fields>
+                        <button_image translate="label" module="labels">
+                            <label>Button Image</label>
+                            <frontend_type>image</frontend_type>
+                            <sort_order>0</sort_order>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">gamuza/itaushopline</upload_dir>
+                            <base_url type="media" scope_info="1">gamuza/itaushopline</base_url>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </button_image>
 						<submit_type>
 							<label>Submit Type</label>
 							<frontend_type>select</frontend_type>
