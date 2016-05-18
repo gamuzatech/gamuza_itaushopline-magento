@@ -42,11 +42,11 @@
 </table>
 <?php endif;?>
 
-<form method="post" id="itaushopline_submit_form" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" target="_blank">
+<form method="get" id="itaushopline_submit_form" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" target="_blank">
 <?php echo $this->getSubmitTransactionInformation (); ?>
 </form>
 
-<form method="post" id="itaushopline_query_form" action="<?php echo $this->_getStoreConfig ('query_url'); ?>" target="_blank">
+<form method="get" id="itaushopline_query_form" action="<?php echo $this->_getStoreConfig ('query_url'); ?>" target="_blank">
 <?php echo $this->getQueryTransactionInformation (); ?>
 </form>
 

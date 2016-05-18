@@ -81,7 +81,7 @@ $submitType = Mage::getStoreConfig ('payment/itaushopline_settings/submit_type')
 $submitForm = $isValidCheckout && !strcmp ($submitType, '1') ? 'onSubmit="GamuzaPaymentPopup (this);"' : 'target="_blank"';
 ?>
 
-<form method="post" id="itaushopline_form_submit" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" <?php echo $submitForm; ?>>
+<form method="get" id="itaushopline_form_submit" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" <?php echo $submitForm; ?>>
 <?php echo $this->getSubmitTransactionInformation (); ?>
 </form>
 

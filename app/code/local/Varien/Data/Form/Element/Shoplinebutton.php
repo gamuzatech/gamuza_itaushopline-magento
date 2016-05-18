@@ -52,7 +52,7 @@ public function getElementHtml()
 {
     $imageUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'gamuza/itaushopline/' . $this->getImage ();
 
-    $html = '<button id="'.$this->getHtmlId().'" name="'.$this->getName()
+    $html = '<button id="'.$this->getHtmlId().'" name="'.$this->getName() . '"'
         . ' value="'.$this->getEscapedValue().'" '.$this->serialize($this->getHtmlAttributes(array('type'=>'submit'))).'>'
         . ' <img src="' . $imageUrl . '" alt="' . $this->getLabel() . '" />'
         . ' </button>' . '<br/>';
