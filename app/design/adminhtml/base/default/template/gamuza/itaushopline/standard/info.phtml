@@ -42,6 +42,8 @@
 </table>
 <?php endif;?>
 
+<?php if(!$this->getInvoice()): ?>
+
 <form method="get" id="itaushopline_submit_form" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" target="_blank">
 <?php echo $this->getSubmitTransactionInformation (); ?>
 </form>
@@ -49,5 +51,7 @@
 <form method="get" id="itaushopline_query_form" action="<?php echo $this->_getStoreConfig ('query_url'); ?>" target="_blank">
 <?php echo $this->getQueryTransactionInformation (); ?>
 </form>
+
+<?php endif; ?>
 
 <?php echo $this->getChildHtml()?>
