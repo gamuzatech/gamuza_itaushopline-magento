@@ -153,6 +153,8 @@ public function order (Varien_Object $payment, $amount)
     $payment->setAmount($amount);
     $payment->setLastTransId($order_id);
     $payment->setStatus(self::STATUS_APPROVED);
+
+    $payment->setSkipOrderProcessing(true);
     
     return $this;
 }
