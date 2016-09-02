@@ -130,7 +130,7 @@ public function order (Varien_Object $payment, $amount)
     
     if (strlen ($submit_dc) < self::ITAU_SHOPLINE_SUBMIT_TRANSACTION_LENGTH)
     {
-    Mage::throwException (Mage::helper ('itaushopline')->__('Unable to generate submit transaction code. Please check your settings.'));
+    Mage::throwException (Mage::helper ('itaushopline')->__('Unable to generate submit transaction code. Please check your settings.') . '<br/>' . $submit_dc);
     }
     
     $query_dc = Mage::getModel ('itaushopline/itaucripto')->geraConsulta(
@@ -138,7 +138,7 @@ public function order (Varien_Object $payment, $amount)
     );
     if (strlen ($query_dc) < self::ITAU_SHOPLINE_QUERY_TRANSACTION_LENGTH)
     {
-    Mage::throwException (Mage::helper ('itaushopline')->__('Unable to generate query transaction code. Please check your settings.'));
+    Mage::throwException (Mage::helper ('itaushopline')->__('Unable to generate query transaction code. Please check your settings.') . '<br/>' . $query_dc);
     }
     
     $data = array ('order_id' => $order_id, 'amount' => $amount, 'expiration' => $transaction_expiration, 'number' => $short_number,
