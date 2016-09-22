@@ -66,7 +66,12 @@ extends Mage_Payment_Block_Info
     {
         return Mage::registry('current_invoice');
     }
-    
+
+    public function getShipment()
+    {
+        return Mage::registry('current_shipment');
+    }
+
     protected function _getStoreConfig ($field)
     {
 		return Mage::getStoreConfig ("payment/itaushopline_settings/{$field}");

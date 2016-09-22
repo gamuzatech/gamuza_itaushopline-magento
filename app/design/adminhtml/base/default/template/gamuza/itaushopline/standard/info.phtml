@@ -42,7 +42,7 @@
 </table>
 <?php endif;?>
 
-<?php if(!$this->getInvoice()): ?>
+<?php if(!$this->getInvoice() && !$this->getShipment()): ?>
 
 <form method="get" id="itaushopline_submit_form" action="<?php echo $this->_getStoreConfig ('submit_url'); ?>" target="_blank">
 <?php echo $this->getSubmitTransactionInformation (); ?>
@@ -55,3 +55,4 @@
 <?php endif; ?>
 
 <?php echo $this->getChildHtml()?>
+
