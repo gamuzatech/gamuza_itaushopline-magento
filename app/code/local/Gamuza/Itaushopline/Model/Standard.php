@@ -98,7 +98,7 @@ public function order (Varien_Object $payment, $amount)
     $obsadd1 = $this->_getStoreConfig ('settings/obsadd1');
     $obsadd2 = $this->_getStoreConfig ('settings/obsadd2');
     $obsadd3 = $this->_getStoreConfig ('settings/obsadd3');
-    $tax_vat = $order->getCustomerTaxvat();
+    $tax_vat = preg_replace ('#[^0-9]#', "", $order->getCustomerTaxvat());
     $address = $quote->getBillingAddress();
     $name = $address->getName ();
     list ($street1, $street2) = $this->_getSplittedStreet ($address, $store_id);
@@ -123,7 +123,7 @@ public function order (Varien_Object $payment, $amount)
     $short_number = substr ($number, -8); /* Order number max. length for ItauShopLine */
     
     $submit_dc = Mage::getModel ('itaushopline/itaucripto')->geraDados(
-    $code, $short_number, str_replace ('.', "", number_format ($amount, 2, ',', '.')), $obs, $key, $name, '01' /* 01:CPF, 02:CNPJ */, $tax_vat,
+    $code, $short_number, str_replace ('.', "", number_format ($amount, 2, ',', '.')), $obs, $key, $name, strlen($tax_vat) == 14 ? '02' : '01' /* 01:CPF, 02:CNPJ */, $tax_vat,
     $street1, $street2, $postcode, $city, $region, $bank_expiration, $return_url,
     $obsadd1, $obsadd2, $obsadd3
     );
