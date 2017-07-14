@@ -2,7 +2,7 @@
 
 **Compatível com a plataforma Magento CE versão 1.6 a 1.9**
 
-[Necessário módulo Gamuza_Utils](https://github.com/gamuzabrasil/gamuza_utils-magento)
+[Necessário módulo Gamuza_Utils](https://github.com/gamuzatech/gamuza_utils-magento)
 
 Os seu clientes também podem pagar suas compras usando o método de pagamento mais comum em lojas virtuais.
 
@@ -22,7 +22,7 @@ E não se preocupe com os anti-popup. Nós avisamos também os seus clientes sob
 
     $ cd /path/to/magento
     $ modgit init
-    $ modgit add gamuza_itaushopline https://github.com/gamuzabrasil/gamuza_itaushopline-magento.git
+    $ modgit add gamuza_itaushopline https://github.com/gamuzatech/gamuza_itaushopline-magento.git
 
 **Instalação manual dos arquivos**
 
