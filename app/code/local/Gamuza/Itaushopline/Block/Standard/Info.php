@@ -96,10 +96,12 @@ extends Mage_Payment_Block_Info
             'name' => 'DC',
             'value' => $data ['submit_dc'],
         ));
-        $fieldset->addField ('submit', 'shoplinebutton', array(
+        $fieldset->addField ('shoplinebutton', 'shoplinebutton', array(
             'label' => Mage::helper ('itaushopline')->__('Submit this transaction'),
             'value' => Mage::helper ('itaushopline')->__('Submit'),
             'image' => Mage::getStoreConfig ('payment/itaushopline_settings/button_image'),
+            'class' => 'shoplinebutton',
+            'name'  => 'shoplinebutton'
         ));
         
         return $submit_form->toHtml();
