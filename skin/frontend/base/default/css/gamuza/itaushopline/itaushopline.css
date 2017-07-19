@@ -1,0 +1,13 @@
+.button.shoplinebutton {
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    appearance: button;
+
+    padding: 0;
+}
+
+.button.shoplinebutton span {
+    display: inline-block;
+    padding: 5px 10px;
+}
+

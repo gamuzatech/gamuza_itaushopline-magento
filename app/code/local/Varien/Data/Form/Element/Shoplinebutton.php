@@ -50,12 +50,22 @@ public function getLabelHtml($idSuffix = '')
 
 public function getElementHtml()
 {
-    $imageUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'gamuza/itaushopline/' . $this->getImage ();
+    $image = $this->getImage ();
+    if (!empty ($image))
+    {
+        $imageUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'gamuza/itaushopline/' . $this->getImage ();
+        $imageTag = ' <img src="' . $imageUrl . '" alt="" title="' . $this->_escape($this->getLabel()) . '" /> ';
+    }
+    else
+    {
+        $imageTag = ' <span>' . $this->_escape($this->getLabel()) . '</span> ';
+    }
 
-    $html = '<button id="'.$this->getHtmlId().'" name="'.$this->getName() . '"'
+    $html = '<a id="'.$this->getHtmlId().'" name="'.$this->getName() . '"'
+        . ' target="_blank" href="'.$this->getHref().'"'
         . ' value="'.$this->getEscapedValue().'" '.$this->serialize($this->getHtmlAttributes(array('type'=>'submit'))).'>'
-        . ' <img src="' . $imageUrl . '" alt="' . $this->getLabel() . '" />'
-        . ' </button>' . '<br/>';
+        . $imageTag
+        . ' </a>' . '<br/>';
     $html.= $this->getAfterElementHtml();
 
     return $html;
