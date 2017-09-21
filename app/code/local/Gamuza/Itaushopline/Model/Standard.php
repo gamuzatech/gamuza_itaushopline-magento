@@ -35,6 +35,7 @@ protected $_code = 'itaushopline_standard';
 protected $_canOrder = true;
 protected $_canAuthorize = false;
 protected $_canCapture = true;
+protected $_canRefund = true;
 
 protected $_formBlockType = 'itaushopline/standard_form';
 protected $_infoBlockType = 'itaushopline/standard_info';
