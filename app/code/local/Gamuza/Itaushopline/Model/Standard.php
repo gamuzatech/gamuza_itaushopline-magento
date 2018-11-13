@@ -103,7 +103,7 @@ public function order (Varien_Object $payment, $amount)
     $address = $quote->getBillingAddress();
     $name = $address->getName ();
     list ($street1, $street2) = $this->_getSplittedStreet ($address, $store_id);
-    $postcode = $address->getPostcode ();
+    $postcode = preg_replace ('#[^0-9]#', "", $address->getPostcode ());
     $city = $address->getCity ();
     $region = $address->getRegion ();
     $expiration = strtotime ('+' . $this->_getStoreConfig ('settings/expiration') . 'days');
