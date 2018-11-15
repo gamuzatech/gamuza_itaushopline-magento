@@ -71,11 +71,19 @@ private function _getSplittedStreet (/* Mage_Sales_Model_Order_Address */ $addre
     $street1 = "";
     $street2 = "";
 
-    for ($i = 1; $i < $lines_count; $i ++) $street1 .= $address->getStreet ($i) . chr (32);
+    for ($i = 1; $i < $lines_count; $i ++)
+    {
+        $street1 .= $this->_getHelper ()->removeAccents ($address->getStreet ($i)) . chr (32);
+    }
 
     $street2 = $address->getStreet ($lines_count); // last line for neighborhood.
 
     return array (substr ($street1, 0, -1), $street2);
+}
+
+protected function _getHelper ()
+{
+    return Mage::helper ('itaushopline');
 }
 
 public function order (Varien_Object $payment, $amount)
