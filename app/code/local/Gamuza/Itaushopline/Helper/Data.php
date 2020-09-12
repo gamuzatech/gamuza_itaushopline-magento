@@ -27,6 +27,6 @@
  */
 
 class Gamuza_Itaushopline_Helper_Data
-extends Mage_Core_Helper_Abstract
+extends Mage_Core_Helper_Data
 {
 }

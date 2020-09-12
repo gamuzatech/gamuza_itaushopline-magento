@@ -81,6 +81,11 @@ private function _getSplittedStreet (/* Mage_Sales_Model_Order_Address */ $addre
     return array (substr ($street1, 0, -1), $street2);
 }
 
+protected function _getHelper ()
+{
+    return Mage::helper ('itaushopline');
+}
+
 public function order (Varien_Object $payment, $amount)
 {
     $order = $payment->getOrder ();
